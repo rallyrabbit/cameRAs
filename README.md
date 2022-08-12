@@ -29,13 +29,15 @@ This is but one way you can get your camera streams locally (in this case, on a 
 ## Getting Started
 What do you need?  A machine running Linux, I used a Raspberry Pi 2B, Raspberry Pi 3B and Libre Potato with this solution with 8 cameras.  So far, this is ok.  To get RTSP or RTMP streamed to HLS for ffmpeg to work ahs the following requirements.
 
-> sudo apt update
-> sudo apt upgrade
-> sudo apt install build-essential
-> sudo apt install libpcre3
-> sudo apt install libpcre3-dev
-> sudo apt install libssl-dev
-> sudo apt install unzip
+'''
+sudo apt update
+sudo apt upgrade
+sudo apt install build-essential
+sudo apt install libpcre3
+sudo apt install libpcre3-dev
+sudo apt install libssl-dev
+sudo apt install unzip
+'''
 
 Optional depending:
 > sudo apt install nginx
