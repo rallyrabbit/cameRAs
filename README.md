@@ -98,3 +98,18 @@ Reboot to have nginx start automatically.  Now we are ready to set up more for f
 
 ## website
 
+## working notes
+install php-fpm
+install nginx
+make sure php-fpm and nginx run as the same user (most likely www-data, add line toi nginx.conf for the common user user = www-data;)
+sudo apt install libnginx-mod-rtmp
+socket file the php-fpm creates needs to be readable by nginx
+in order to allow nginx access to the socket, add /etc/php/7.4/fpm/pool.d/www.conf add listen.mode = 0644 then restart php-fpm
+/etc/php/7.4/fpm/php.ini cgi.fix_pathinfo=0 - uncomment and add =0
+
+
+
+
+Interesting Streamking information:
+Reolink: https://reolink.com/blog/stream-ip-camera-to-youtube/
+Wyze: https://forums.wyzecam.com/t/rtsp-stream-to-view-on-local-website-using-web-browser/102730
