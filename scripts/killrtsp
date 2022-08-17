@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SERVICE="ffmpeg"
+
+/usr/bin/pkill $SERVICE
+
