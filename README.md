@@ -37,6 +37,9 @@ sudo apt install libpcre3
 sudo apt install libpcre3-dev
 sudo apt install libssl-dev
 sudo apt install unzip
+sudo apt install openssl
+sudo apt install zlib1g
+sudo apt install zlib1g-dev
 ```
 
 Optional depending:
