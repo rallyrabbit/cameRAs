@@ -65,6 +65,7 @@ Get the file here in nginx/nginx and put it into /etc/init.d
 sudo chmod 655 /etc/init.d/nginx
 Get the file here in nginx/nginx.conf and put it into the nginx configuration directy /usr/local/nginx/conf
 There are some tips on the nginx.conf coming, but, if you just want to take what's there for 4 cameras, here ya go, this is what you need.
+sudo update-rc.d nginx defaults
 sudo service nginx start
 sudo service nginx stop
 ```
