@@ -26,6 +26,12 @@ So, I ripped out the UI on MotionEye (thank you) and started my own customizatio
 ## First and Foremost
 This is but one way you can get your camera streams locally (in this case, on a website/page that could be viewed anywhere in house; meaning on my local network).  There is very little other security that I am putting in place here other than what is on my local network.  So, with that said, you use this solution at your won risk.
 
+To get some of the utilities with git and github:
+```
+sudo apt install git
+sudo apt install gh
+```
+
 ## Getting Started
 What do you need?  A machine running Linux, I used a Raspberry Pi 2B, Raspberry Pi 3B and Libre Potato with this solution with 8 cameras.  So far, this is ok.  To get RTSP or RTMP streamed to HLS for ffmpeg to work ahs the following requirements.
 
