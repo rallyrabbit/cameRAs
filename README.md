@@ -76,6 +76,18 @@ sudo service nginx start
 sudo service nginx stop
 ```
 
+Now NGINX is set up, it is time to install PHP for NGINX
+PHP is going to be needed for server side scripting called from cameRAs.
+```
+sudo apt install php-fpm
+```
+You're going to have to make sure the PHP and NGINX are running as the same user.  Make sure this line is in the nginx.conf somewhere near the top.  Most like this user is www-data in Linux, but make sure and substitute whatever user it is in the line below in the nginx.conf file.
+```
+user=www-data;
+```
+The PHP socket file for php-fpm creates needs to be readable by NGINX.  In order to allow nginx access to the socket, add /etc/php/7.4/fpm/pool.d/www.conf add listen.mode = 0644 then restart php-fpm
+/etc/php/7.4/fpm/php.ini cgi.fix_pathinfo=0 - uncomment and add =0
+
 Create the temporary HLS directories, you need one for each camera that you'll be dealing with.  Note that I am putting these in the home directory, this will need to be reflected in nginx.conf.
 ```
 mkdir ~/HLS
