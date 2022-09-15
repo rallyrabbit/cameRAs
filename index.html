@@ -17,29 +17,34 @@
 <!--
   <link href="https://vjs.zencdn.net/7.7.5/video-js.css" rel="stylesheet" />
 -->
-<!--            <link rel="stylesheet" type="text/css" href="static/css/video-js.css" />
+<!--            <link rel="stylesheet" type="text/css" href="css/video-js.css" />
 -->
-            <link rel="stylesheet" type="text/css" href="static/css/jquery.timepicker.css?v=0.42.1" />
-            <link rel="shortcut icon" href="static/favicon.ico?v=0.42.1" />
-            <link rel="apple-touch-icon" href="static/favicon.ico?v=0.42.1" />
-            <link rel="manifest" href="static/../manifest.json?v=0.42.1" />
+<!--            <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css?v=0.42.1" />
+-->
+            <link rel="shortcut icon" href="images/favicon.ico" />
+            <link rel="apple-touch-icon" href="images/favicon.ico" />
+<!--
+            <link rel="manifest" href="static/../manifest.json" />
+-->
         
-    <link rel="stylesheet" type="text/css" href="static/css/ui.css?v=0.42.1" />
-    <link rel="stylesheet" type="text/css" href="static/css/main.css?v=0.42.1" />
+    <link rel="stylesheet" type="text/css" href="css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
     
 <!--
-            <script type="text/javascript" src="static/js/css-browser-selector.js?v=0.42.1"></script>
+            <script type="text/javascript" src="js/css-browser-selector.js?v=0.42.1"></script>
 -->
-            <script type="text/javascript" src="static/js/jquery.min.js?v=0.42.1"></script>
-<!--            <script type="text/javascript" src="static/js/jquery.timepicker.min.js?v=0.42.1"></script>
-            <script type="text/javascript" src="static/js/jquery.mousewheel.js?v=0.42.1"></script>
+            <script type="text/javascript" src="js/jquery.min.js?v=0.42.1"></script>
+<!--            <script type="text/javascript" src="js/jquery.timepicker.min.js?v=0.42.1"></script>
+            <script type="text/javascript" src="js/jquery.mousewheel.js?v=0.42.1"></script>
 -->
+<!--
             <script type="text/javascript">
                 var staticPath = 'static/';
             </script>
+-->
         
-    <script type="text/javascript" src="static/js/ui.js?v=0.42.1"></script>
-    <script type="text/javascript" src="static/js/main.js?v=0.42.1"></script>
+    <script type="text/javascript" src="js/ui.js?v=0.42.1"></script>
+    <script type="text/javascript" src="js/main.js?v=0.42.1"></script>
 <!--    
     <script type="text/javascript">
         var adminUsername = 'admin';
@@ -63,18 +68,19 @@
         <div class="header-container">
             <div class="settings-top-bar closed">
                 <div class="button icon top-settings-button mouse-effect" title="settings"></div>
-                <div class="button icon top-restart-button mouse-effect" title="restart camera software"></div>
+                <div class="button icon top-camera-restart-button mouse-effect" title="restart camera software"></div>
+                <div class="button icon top-camera-stop-button mouse-effect" title="restart camera software"></div>
                 <div class="button icon top-reboot-button mouse-effect" title="reboot"></div>
 <!--                <select class="styled" id="cameraSelect" ></select>
                 <div class="button icon rem-camera-button mouse-effect" id="remCameraButton" title="remove camera" ></div>
                 <div class="button apply-button" id="applyButton">Apply</div>
 -->
-                <div class="hostname">potato (192.168.1.128)</div>
+                <div class="hostname">potato (192.168.1.144)</div>
             </div>
             <div class="logo">
                 <a href="">
                     <span class="logo">cameRAs</span>
-                    <img class="logo" src="static/img/ra-logo.png">
+                    <img class="logo" src="images/ra-logo.png">
                 </a>
             </div>
         </div>
@@ -128,19 +134,19 @@
                     <table class="settings">
                         <tr class="settings-item">
                             <td class="settings-item-label"><span class="settings-item-label">cameRAs Version</span></td>
-                            <td class="settings-item-value"><span class="settings-item-label">0.1</span></td>
+                            <td class="settings-item-value"><span class="settings-item-label">0.2</span></td>
                         </tr>
                         <tr class="settings-item">
                             <td class="settings-item-label"><span class="settings-item-label">OS Version</span></td>
-                            <td class="settings-item-value"><span class="settings-item-label">Ubuntu 18.04</span></td>
+                            <td class="settings-item-value"><span class="settings-item-label">Ubuntu 22.04</span></td>
                         </tr>
                         <tr class="settings-item">
                             <td class="settings-item-label"><span class="settings-item-label">ffmpeg Version</span></td>
-                            <td class="settings-item-value"><span class="settings-item-label">3.4.11-0ubuntu0.1</span></td>
+                            <td class="settings-item-value"><span class="settings-item-label">7:4.4.2-0ubuntu0.22.04.1</span></td>
                         </tr>
                         <tr class="settings-item">
                             <td class="settings-item-label"><span class="settings-item-label">Nginx Version</span></td>
-                            <td class="settings-item-value"><span class="settings-item-label">1.17.9</span></td>
+                            <td class="settings-item-value"><span class="settings-item-label">1.23.1</span></td>
                         </tr>
                     </table>
 
@@ -1098,17 +1104,25 @@
                 </form>
             </div>
         </div>
-        <img class="background-logo" src="static/img/ra-logo.png">
+        <img class="background-logo" src="images/ra-logo.png">
         <div class="page-container three-columns fit-frames-vertically">
 
            <div class="camera-frame" id="camera3" style="opacity: 1;">
               <div class="camera-container">
                  <div class="camera-overlay visible" style>
                     <div class="camera-overlay-top">
-                       <span class="camera-name">Test Picture</span>
+                       <div class="camera-name">
+                          <span class="camera-name">Test Picture</span>
+                       </div>
+                       <div class="camera-top-buttons">
+<div class="button icon camera-top-button mouse-effect full-screen" title="toggle full-screen camera"></div>
+<div class="button icon camera-top-button mouse-effect start-camera" title="open pictures browser"></div>
+<div class="button icon camera-top-button mouse-effect stop-camera" title="open movies browser"></div>
+                       </div>
                     </div>
+
                  </div>
-                 <img class="camera" src="static/img/highpoint.jpeg" style="">
+                 <img class="camera" src="images/highpoint.jpeg" style="">
               </div>
            </div>
 
@@ -1121,7 +1135,7 @@
                  </div>
 
                  <video id="my-video2" class="video-js" autoplay muted preload="none" data-setup='{"aspectRatio": "16:9"}'>
-                    <source src="http://192.168.1.128/cam2/rtsp/index.m3u8" type="application/x-mpegURL" />
+                    <source src="http://192.168.1.144/cam2/rtsp/index.m3u8" type="application/x-mpegURL" />
                  </video>
 
               </div>
@@ -1135,17 +1149,17 @@
                     </div>
                  </div>
 <!--                 <div class="camera-placeholder" style="opacity: 0;">
-                    <img class="no-camera" src="static/img/no-camera.svg">
+                    <img class="no-camera" src="img/no-camera.svg">
                  </div>
 -->
 
 
                  <video id="my-video1" class="video-js" autoplay muted preload="none" data-setup='{"aspectRatio": "16:9"}'>
-                    <source src="http://192.168.1.128/cam1/rtsp/index.m3u8" type="application/x-mpegURL" />
+                    <source src="http://192.168.1.144/cam1/rtsp/index.m3u8" type="application/x-mpegURL" />
                  </video>
 
 <!--                 <div class="camera-progress">
-                    <img class="camera-progress" src="static/img/camera-progress.gif">
+                    <img class="camera-progress" src="img/camera-progress.gif">
                  </div>
 -->
 <!--
@@ -1155,6 +1169,39 @@
                     </div>
                  </div>
 -->
+              </div>
+           </div>
+
+           <div class="camera-frame" id="camera2" style="opacity: 1;">
+              <div class="camera-container">
+                 <div class="camera-overlay visible" style>
+                    <div class="camera-overlay-top">
+                       <span class="camera-name">Test Picture</span>
+                    </div>
+                 </div>
+                 <img class="camera" src="images/highpoint.jpeg" style="">
+              </div>
+           </div>
+
+           <div class="camera-frame" id="camera1" style="opacity: 1;">
+              <div class="camera-container">
+                 <div class="camera-overlay visible" style>
+                    <div class="camera-overlay-top">
+                       <span class="camera-name">Test Picture</span>
+                    </div>
+                 </div>
+                 <img class="camera" src="images/highpoint.jpeg" style="">
+              </div>
+           </div>
+
+           <div class="camera-frame" id="camera0" style="opacity: 1;">
+              <div class="camera-container">
+                 <div class="camera-overlay visible" style>
+                    <div class="camera-overlay-top">
+                       <span class="camera-name">Test Picture</span>
+                    </div>
+                 </div>
+                 <img class="camera" src="images/highpoint.jpeg" style="">
               </div>
            </div>
 
