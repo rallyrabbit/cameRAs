@@ -26,6 +26,12 @@ So, I ripped out the UI on MotionEye (thank you) and started my own customizatio
 ## First and Foremost
 This is but one way you can get your camera streams locally (in this case, on a website/page that could be viewed anywhere in house; meaning on my local network).  There is very little other security that I am putting in place here other than what is on my local network.  So, with that said, you use this solution at your won risk.
 
+To get some of the utilities with git and github:
+```
+sudo apt install git
+sudo apt install gh
+```
+
 ## Getting Started
 What do you need?  A machine running Linux, I used a Raspberry Pi 2B, Raspberry Pi 3B and Libre Potato with this solution with 8 cameras.  So far, this is ok.  To get RTSP or RTMP streamed to HLS for ffmpeg to work ahs the following requirements.
 
@@ -37,6 +43,10 @@ sudo apt install libpcre3
 sudo apt install libpcre3-dev
 sudo apt install libssl-dev
 sudo apt install unzip
+sudo apt install openssl
+sudo apt install ssl-dev
+sudo apt install zlib1g
+sudo apt install zlib1g-dev
 ```
 
 Optional depending:
@@ -61,9 +71,22 @@ Get the file here in nginx/nginx and put it into /etc/init.d
 sudo chmod 655 /etc/init.d/nginx
 Get the file here in nginx/nginx.conf and put it into the nginx configuration directy /usr/local/nginx/conf
 There are some tips on the nginx.conf coming, but, if you just want to take what's there for 4 cameras, here ya go, this is what you need.
+sudo update-rc.d nginx defaults
 sudo service nginx start
 sudo service nginx stop
 ```
+
+Now NGINX is set up, it is time to install PHP for NGINX
+PHP is going to be needed for server side scripting called from cameRAs.
+```
+sudo apt install php-fpm
+```
+You're going to have to make sure the PHP and NGINX are running as the same user.  Make sure this line is in the nginx.conf somewhere near the top.  Most like this user is www-data in Linux, but make sure and substitute whatever user it is in the line below in the nginx.conf file.
+```
+user=www-data;
+```
+The PHP socket file for php-fpm creates needs to be readable by NGINX.  In order to allow nginx access to the socket, add /etc/php/7.4/fpm/pool.d/www.conf add listen.mode = 0644 then restart php-fpm
+/etc/php/7.4/fpm/php.ini cgi.fix_pathinfo=0 - uncomment and add =0
 
 Create the temporary HLS directories, you need one for each camera that you'll be dealing with.  Note that I am putting these in the home directory, this will need to be reflected in nginx.conf.
 ```
