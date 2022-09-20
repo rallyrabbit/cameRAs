@@ -10,22 +10,34 @@ elif [ $1 == restart ]; then
   sleep 3
 fi
 
+#
+# Wyze Streaming Information from:
+# https://forums.wyzecam.com/t/rtsp-stream-to-view-on-local-website-using-web-browser/102730
+#
+# Reolink Streaming Information from:
+# https://support.reolink.com/hc/en-us/articles/360038791973-Is-Reolink-Camera-Compatible-with-Streaming-on-YouTube-Live
+#
+
 #cam1 (wyze)
 RTSP_URL1="rtsp://officecam:camtest1@192.168.1.137/live"
 DEST_URL1="rtmp://192.168.1.144:1935/cam1/rtmp"
 STARTCAM1="ffmpeg -use_wallclock_as_timestamps 1 -i ${RTSP_URL1} -c copy -f flv ${DEST_URL1}"
 
 #cam2 (reolink)
-RTSP_URL2="rtmp://192.168.1.210:1935/bcs/channel0_main.bcs?channel=0&stream=0&user=admin&password=camtest1"
+#channel0_main is the full video
+#RTSP_URL2="rtmp://192.168.1.210:1935/bcs/channel0_main.bcs?channel=0&stream=0&user=admin&password=camtest1"
+RTSP_URL2="rtmp://192.168.1.210:1935/bcs/channel0_sub.bcs?channel=0&stream=0&user=admin&password=camtest1"
 DEST_URL2="rtmp://192.168.1.144:1935/cam2/rtmp"
 STARTCAM2="ffmpeg -use_wallclock_as_timestamps 1 -i ${RTSP_URL2} -c copy -f flv ${DEST_URL2}"
 
 #cam3 (reolink)
-RTSP_URL3="rtmp://192.168.1.211:1935/bcs/channel0_main.bcs?channel=0&stream=0&user=admin&password=camtest1"
+#RTSP_URL3="rtmp://192.168.1.211:1935/bcs/channel0_main.bcs?channel=0&stream=0&user=admin&password=camtest1"
+RTSP_URL3="rtmp://192.168.1.211:1935/bcs/channel0_sub.bcs?channel=0&stream=0&user=admin&password=camtest1"
 DEST_URL3="rtmp://192.168.1.144:1935/cam3/rtmp"
 STARTCAM3="ffmpeg -use_wallclock_as_timestamps 1 -i ${RTSP_URL3} -c copy -f flv ${DEST_URL3}"
 
 #cam4 (reolink)
+#channel0_main is the full video
 #RTSP_URL4="rtmp://192.168.1.212:1935/bcs/channel0_main.bcs?channel=0&stream=0&user=admin&password=camtest1"
 RTSP_URL4="rtsp://admin:camtest1@192.168.1.212:554/h264Preview_01_main"
 DEST_URL4="rtmp://192.168.1.144:1935/cam4/rtmp"
@@ -40,5 +52,5 @@ else
 	$STARTCAM1 &
 	$STARTCAM2 &
 	$STARTCAM3 &
-	$STARTCAM4
+#	$STARTCAM4
 fi
