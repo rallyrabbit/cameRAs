@@ -1321,7 +1321,7 @@ img.camera-progress {
     }
 }
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: 920px) {
     /* small screens (mobile devices, including tablets) */
     
     div.page-container.stretched {
@@ -1383,7 +1383,7 @@ img.camera-progress {
     }
 }
 
-@media all and (max-width: 1200px) {
+@media all and (max-width: 920px) {
     div.page-container {
         font-size: 16px !important;
         margin-left: auto !important;
